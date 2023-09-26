@@ -111,11 +111,8 @@ const translateY = {
 };
 
 
-Notifications.PropTypes = {
-  displayDrawer: PropTypes.bool,
-}
-Notifications.defaultProps = {
-  displayDrawer: false,
-}
-export default Notifications;
-
+Notifications.propTypes = {
+  displayDrawer: PropTypes.bool.isRequired,
+  handleDisplayDrawer: PropTypes.func.isRequired,
+  handleHideDrawer: PropTypes.func.isRequired,
+};

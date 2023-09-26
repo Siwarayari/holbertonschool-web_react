@@ -6,50 +6,19 @@ import Footer from '../Footer/Footer';
 
 
 describe('<MyComponent />', () => {
-  it('renders app', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("App-header")).toEqual("App-header");
-  });
+it('verifies that calling handleDisplayDrawer updates the state to true', () => {
+  const wrapper = shallow(<App />);
+  const instance = wrapper.instance();
+  expect(wrapper.state().displayDrawer).toEqual(false);
+  instance.handleDisplayDrawer();
+  expect(wrapper.state().displayDrawer).toEqual(true);
+});
 
-  it('renders App-header', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("App")).toEqual("App");
-  });
-
-  it('renders App-body', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("App-body")).toEqual("App-body");
-  });
-
-  it('renders App-footer', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("App-footer")).toEqual("App-footer");
-  });
-
-  it('check that CourseList is not displayed', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("CourseList")).toEqual("false");
-  });
-
-  it('verify that the Login component is not included', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("CourseList")).toEqual("true");
-    expect(wrapper.find(<CourseList />)).toEqual("true");
-    expect(wrapper.find(<Login />)).toEqual("true");
-  });
-
-  it('verify that the Login component is not included', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("displayDrawer")).toEqual("true");
-  });
-
-  it('verify that the Login component is not included', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("displayDrawer")).toEqual("false");
-  });
-
-  it('verify that the Login component is not included', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find("handleHideDrawer")).toEqual("false");
-  });
+it('verifies that calling handleHideDrawer updates the state to false', () => {
+  const wrapper = shallow(<App />);
+  const instance = wrapper.instance();
+  wrapper.setState({ displayDrawer: true });
+  expect(wrapper.state().displayDrawer).toEqual(true);
+  instance.handleHideDrawer();
+  expect(wrapper.state().displayDrawer).toEqual(false);
 });
